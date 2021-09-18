@@ -12,7 +12,7 @@ import math as math
 posicoes = 30
 r = np.zeros(posicoes)
 
-# encontra o paramtro XC da matriz
+# encontra o parametro XC da matriz
 def xc_finder(x):
     xc = -(x[1]) / (2 * (x[0]))
     xcentro = xc
@@ -54,8 +54,6 @@ def foco_f(aelipse, excentricidade):
 # encontra o periodo
 def periodo_elipse(aelipse):
     periodo = (2 * math.pi) * ((((aelipse) ** 3) / (float(6.693) * (10 ** (-11)) * float(5.972) * (10 ** 24))) ** (1 / 2))
-    print('\npi:\n', (math.pi))
-
     print('\nperiodo:\n', (periodo))
     return periodo
 

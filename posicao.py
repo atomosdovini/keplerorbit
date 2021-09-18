@@ -13,6 +13,7 @@ import math
 posicoes = 30
 pos_x = np.zeros(posicoes)
 pos_y = np.zeros(posicoes)
+
 def posicao_y(r,ano_verdadeira):
     for j in range(posicoes):
         posicaoy = r[j]*np.sin(ano_verdadeira[j])

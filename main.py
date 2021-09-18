@@ -75,14 +75,26 @@ r = parametro.distancia_r(aelipse,excentricidade,ano_verdadeira)
 pos_y = posicao.posicao_y(r,ano_verdadeira)
 pos_x = posicao.posicao_x(r,ano_verdadeira,xcentro,foco)
 
+
+
+#função para calcular área deve ser analisada mais a fundo
 def area_spline(coef,pos_x):
 #   print('\na', a)
     for i in range(2):
         x = pos_x[i]
+        x1 = pos_x[i+1]       
         a[i] = coef[i]
         area = abs(a[i+1]*x - a[i]*x)
     return area[i]
     
+#def area_spline(coef,posi_x):
+#    for i in range(2):
+#        x = posi_x[i]
+#        x1 = posi_x[i+1]  
+#        area = coef[i][0] + ((coef[i][1]*(x-x1)**2)/2) + ((coef[i][2]*(x-x1)**3)/3) + ((coef[i][3]*(x-x1)**4)/4) 
+#    return area
+
+
 for i in range(n_spline):
    x1_spline[i] = pos_x[i] 
    y1_spline[i] = pos_y[i] 
@@ -91,9 +103,9 @@ for i in range(n_spline):
 
 coef1 = interpolacao.solve_spline( X, Y, derivatives=[0,0], verbose=True )
 coef2 = interpolacao.solve_spline( X2, Y2, derivatives=[0,0], verbose=True )
-area1 = area_spline(coef1,pos_x)
+area1 = area_spline(coef1, x1_spline)
 print('\narea 1:\n', area1)
-area2 = area_spline(coef2,pos_x)
+area2 = area_spline(coef2, x2_spline)
 print('\narea 2:\n', area2)
 X = x1_spline
 Y = y1_spline
@@ -115,13 +127,13 @@ else:
 y=0 
 t = np.linspace(0, 2*math.pi, 100)
 plt.plot( xcentro+aelipse*np.cos(t) , y+belipse*np.sin(t) )
-plt.scatter(pos_x,pos_y, marker='o', color='b' )
+plt.scatter(pos_x,pos_y, marker='o', color='b' ) #em azul
 plt.grid(color='lightgray',linestyle='--')
-plt.plot( foco , 0 , "o" )
-plt.plot( X , Y , "o" )
-plt.plot( xx, yy, "-" )
-plt.plot( X2 , Y2 , "o" )
-plt.plot( xx2, yy2, "-" )
+plt.plot( foco , 0 , "o" ) #em laranja
+plt.plot( X , Y , "o", color='m' )
+plt.plot( xx, yy, "-", color='m' )
+plt.plot( X2 , Y2 , "o", color='c' )
+plt.plot( xx2, yy2, "-", color='c' )
 plt.margins(0.1)
 plt.show()
 
