@@ -1,5 +1,4 @@
-Na segunda parte do trabalho, procurei organizar melhor as funções em bibliotecas.
-
+Representação de órbita kepleriana a partir de coordenadas
 Os arquivos dentro da pasta, são, 
 
 gauss: função que realiza eliminação de gauss, função que faz a substituição regressiva, e função que retorna a solução com os parametros x0, x1, x2 
